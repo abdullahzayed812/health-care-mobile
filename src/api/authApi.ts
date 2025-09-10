@@ -4,12 +4,12 @@ import { User, LoginCredentials, RegisterData } from '../types/auth';
 
 interface AuthResponse {
   user: User;
-  token: string;
+  accessToken: string;
 }
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    login: builder.mutation<ApiResponse<AuthResponse>, LoginCredentials>({
+    login: builder.mutation<AuthResponse, LoginCredentials>({
       query: credentials => ({
         url: 'auth/login',
         method: 'POST',

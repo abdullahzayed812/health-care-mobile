@@ -6,7 +6,7 @@ import { logout } from '../features/auth/authSlice';
 import { ApiError } from '../types/api';
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: 'http://localhost:3000/api/',
+  baseUrl: 'http://10.0.2.2:3000/api/',
   prepareHeaders: async (headers, { getState }) => {
     const state = getState() as RootState;
     const token = state.auth.token || (await AsyncStorage.getItem('authToken'));
@@ -40,7 +40,6 @@ const baseQueryWithAuth: BaseQueryFn<
     return {
       status,
       data: { error: typeof data === 'string' ? data : 'Unknown error' },
-      // Add any custom error fields
     };
   }
 

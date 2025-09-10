@@ -61,21 +61,19 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const onSubmit = async (data: LoginCredentials) => {
     try {
       dispatch(loginStart());
-      const result = await login(data).unwrap();
+      const response = await login(data).unwrap();
 
-      if (result.success) {
-        dispatch(
-          loginSuccess({
-            user: result.data.user,
-            token: result.data.token,
-          }),
-        );
-      } else {
-        dispatch(loginFailure());
-        setError('root', { message: result.message || 'Login failed' });
-      }
+      console.log(response);
+
+      dispatch(
+        loginSuccess({
+          user: response?.user,
+          token: response?.accessToken,
+        }),
+      );
     } catch (error: any) {
       dispatch(loginFailure());
+
       const errorMessage =
         error?.data?.message || 'An error occurred during login';
       setError('root', { message: errorMessage });
