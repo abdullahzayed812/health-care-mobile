@@ -63,8 +63,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
       dispatch(loginStart());
       const response = await login(data).unwrap();
 
-      console.log(response);
-
       dispatch(
         loginSuccess({
           user: response?.user,

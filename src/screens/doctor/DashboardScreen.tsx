@@ -19,7 +19,9 @@ export const DoctorDashboardScreen: React.FC = () => {
     refetch,
   } = useGetDashboardStatsQuery();
 
-  const stats = statsData?.data;
+  const stats = statsData;
+
+  console.log(stats);
 
   const handleRefresh = React.useCallback(() => {
     refetch();
