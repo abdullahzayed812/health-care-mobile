@@ -65,8 +65,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
       dispatch(
         loginSuccess({
-          user: response?.user,
-          token: response?.accessToken,
+          user: response?.data?.user,
+          token: response?.data?.accessToken,
         }),
       );
     } catch (error: any) {

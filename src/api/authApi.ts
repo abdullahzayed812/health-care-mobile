@@ -9,7 +9,7 @@ interface AuthResponse {
 
 export const authApi = baseApi.injectEndpoints({
   endpoints: builder => ({
-    login: builder.mutation<AuthResponse, LoginCredentials>({
+    login: builder.mutation<ApiResponse<AuthResponse>, LoginCredentials>({
       query: credentials => ({
         url: 'auth/login',
         method: 'POST',
