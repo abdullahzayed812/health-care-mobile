@@ -82,11 +82,13 @@ export const appointmentApi = baseApi.injectEndpoints({
     }),
     getDashboardStats: builder.query<
       {
-        total: number;
-        pending: number;
-        confirmed: number;
-        completed: number;
-        todayAppointments: number;
+        data: {
+          total: number;
+          pending: number;
+          confirmed: number;
+          completed: number;
+          todayAppointments: number;
+        };
       },
       void
     >({

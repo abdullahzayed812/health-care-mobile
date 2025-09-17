@@ -16,6 +16,7 @@ const baseQuery = fetchBaseQuery({
     }
 
     headers.set('Content-Type', 'application/json');
+    headers.set('x-tenant-id', '550e8400-e29b-41d4-a716-446655440000');
     return headers;
   },
 });
@@ -39,15 +40,10 @@ const baseQueryWithAuth: BaseQueryFn<
     }
 
     // Return transformed error
-    return {
-      status,
-      data: { error: typeof data === 'string' ? data : 'Unknown error' },
-    };
+    return { data };
   }
 
-  return {
-    data: result.data,
-  };
+  return { data: result.data };
 };
 
 export const baseApi = createApi({
